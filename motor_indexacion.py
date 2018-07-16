@@ -33,7 +33,7 @@ for url_json in output:
     list_dict.append(json.loads(json.dumps(url_json)))
 
 for archivo_html in archivos_html:
-    soup = BeautifulSoup(open('crawled/' + archivo_html), "html.parser", from_encoding='utf-8')
+    soup = BeautifulSoup(open('crawled/' + archivo_html), "html.parser", encoding="latin-1")
     data = soup.findAll(text=True)
 
     palabras = filter(visible, data)
@@ -72,4 +72,3 @@ with open('corpus.json', 'w') as fp:
 
 with open('output_indexado.json', 'w') as fp:
     fp.write(json.dumps(list_dict))
-
